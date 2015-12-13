@@ -19,8 +19,6 @@ Deploying to Google App Engine is free given your app doesn't exceed the [daily 
 2. [Download](https://cloud.google.com/appengine/downloads?hl=en#Google_App_Engine_SDK_for_Python) the Python SDK
 3. [Create](https://cloud.google.com/appengine/docs/python/gettingstartedpython27/uploading) a Google Cloud application and deploy GAEmes.
 
-Note: After the first deployment you may see an initial lag while Google App Engine creates the required datastore indexes. This shouldn't take any longer the 5 minutes.
-
 ## Usage
 
 There are two main components to GAEmes.
