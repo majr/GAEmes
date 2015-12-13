@@ -1,0 +1,17 @@
+version: 1.0
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+# Restrict access to admin page to app owner(s)
+- url: /admin.*
+  script: admin.app
+  login: admin
+# All other requests to games.py
+- url: /.*
+  script: gaemes.app
+
+libraries:
+- name: webapp2
+  version: latest
