@@ -1,7 +1,3 @@
-import cgi
-import urllib
-import webapp2
-from google.appengine.api import users
 from google.appengine.ext import ndb
 
 dbname = 'gamesdb'
@@ -18,3 +14,5 @@ class Game(ndb.Model):
     maxtime = ndb.IntegerProperty()
     difficulty = ndb.IntegerProperty()
     date = ndb.DateTimeProperty(auto_now_add=True)
+
+game_query = Game.query(ancestor=db_key()).order(Game.name)

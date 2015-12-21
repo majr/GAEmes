@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+  </head>
+  <body bgcolor="white" text="black"><center>
+    <div align="right"><a href="/">Home</a></div>
+    
+    <form action="/admin/add" method="post">
+      <table align="center"s>
+        <tr>
+          <td>Name</td>
+          <td>Min Players</td>
+          <td>Max Players</td>
+          <td>Min Time</td>
+          <td>Max Time</td>
+          <td>Difficulty</td>
+        </tr>
+        <tr>
+          <td><input type="text" name="name"></td>
+          <td><input type="text" name="minplayers"></td>
+          <td><input type="text" name="maxplayers"></td>
+          <td><input type="text" name="mintime"></td>
+          <td><input type="text" name="maxtime"></td>
+          <td><input type="text" name="difficulty"></td>
+          <td><input type="submit" value="Add Game"></td>
+        </tr>
+      </table
+    </form>
+    <hr>
+    
+    <table border="1" align="center">
+      <tr>
+        <td>Game</td>
+        <td>Min Players</td>
+        <td>Max Players</td>
+        <td>Max Time</td>
+        <td>Difficulty</td>
+        <td>Date Added</td>
+      </tr>
+      {%  for item in games %}
+        <tr>
+          <td>{{ item.name }}</td>
+          <td>{{ item.minplayers }}</td>
+          <td>{{ item.maxplayers }}</td>
+          <td>{{ item.maxtime }}</td>
+          <td>{{ item.difficulty }}</td>
+          <td>{{ item.date }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
+{% endautoescape %}

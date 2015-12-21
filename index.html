@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <title>My GAEmes Database</title>
+  </head>
+  <body bgcolor="white" text="black">
+    <div align="right"><a href="/admin">Admin</a></div>
+    
+    <center><h1><a href="/">My GAEmes Database</a></h1>
+  
+    <form action="query" method="get">
+        Max Time (minutes): <input type="number" name="timelimit">
+        Number of Players: <select name="playerlimit">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">11</option>
+        </select>
+        <input type="submit">
+    </form>
+    
+    <br><a href="/">View All Games</a><br><br>
+    <table border="1" align="center">
+      <tr>
+        <td>Game</td>
+        <td>Min Players</td>
+        <td>Max Players</td>
+        <td>Max Time</td>
+        <td>Difficulty</td>
+      </tr>
+      {%  for item in games %}
+        <tr>
+          <td>{{ item.name }}</td>
+          <td>{{ item.minplayers }}</td>
+          <td>{{ item.maxplayers }}</td>
+          <td>{{ item.maxtime }}</td>
+          <td>{{ item.difficulty }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+    </br>Total Games: {{games|count}}
+  </body>
+</html>
+{% endautoescape %}

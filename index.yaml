@@ -36,4 +36,3 @@ indexes:
   properties:
   - name: name
     direction: desc
-

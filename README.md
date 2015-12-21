@@ -37,4 +37,4 @@ You can view my personal collection at [games.mattjriley.com](http://games.mattj
 
 ## License
 
-GAEme is released under the MIT license. See the [LICENSE](LICENSE.md) file for full details.
+GAEmes is released under the MIT license. See the [LICENSE](LICENSE.md) file for full details.
