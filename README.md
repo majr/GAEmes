@@ -36,3 +36,12 @@ You can view my personal collection at [games.mattjriley.com](http://games.mattj
 ## License
 
 GAEmes is released under the MIT license. See the [LICENSE](LICENSE.md) file for full details.
+
+## Contact
+
+Subscribe to [gaemes-announce@googlegroups.com](https://groups.google.com/forum/#!forum/gaemes-announce) for updates and news.
+
+Subscribe to [gaemes-discuss@googlegroups.com](https://groups.google.com/forum/#!forum/gaemes-discuss) for general discussion.
+
+E-mail [gaemes-dev@googlegroups.com](mailto:gaemes-dev@googlegroups.com) for dev-specific queries.
+
