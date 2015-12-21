@@ -4,6 +4,9 @@ dbname = 'gamesdb'
 
 def db_key():
     return ndb.Key('dbname', dbname)
+    
+def delete_game(key_url):
+    ndb.Key(urlsafe=key_url).delete()
 
 # NDB Model for a Game
 class Game(ndb.Model):
@@ -13,6 +16,6 @@ class Game(ndb.Model):
     mintime = ndb.IntegerProperty()
     maxtime = ndb.IntegerProperty()
     difficulty = ndb.IntegerProperty()
-    date = ndb.DateTimeProperty(auto_now_add=True)
+    date = ndb.DateProperty(auto_now_add=True)
 
 game_query = Game.query(ancestor=db_key()).order(Game.name)

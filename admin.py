@@ -31,8 +31,16 @@ class AddGame(webapp2.RequestHandler):
         entry.put()
 
         self.redirect('/admin')
+        
+# Remove entry (game) from the datastore and refresh page
+class DelGame(webapp2.RequestHandler):
+    def post(self):
+        key_url = self.request.get('key')
+        q.delete_game(key_url)
+        self.redirect('/admin')
 
 app = webapp2.WSGIApplication([
     ('/admin', Admin),
     ('/admin/add', AddGame),
+    ('/admin/del', DelGame),
 ])

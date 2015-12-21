@@ -29,8 +29,6 @@ This page is publicly viewable. It initially displays the full contents of your 
 Admin page:
 This page is accessible only to administrators of the app by appending 'admin' to the base URL (e.g. mycoolapp.appspot.com/admin). This is where you can easily add items to your collection.
 
-Note: In this initial version only adding items is supported through the admin page. To modify/remove an item you'll need to do it via the [datastore interface](https://console.developers.google.com/datastore).
-
 ## Example
 
 You can view my personal collection at [games.mattjriley.com](http://games.mattjriley.com/).
