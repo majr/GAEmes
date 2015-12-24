@@ -24,7 +24,7 @@ class Query(webapp2.RequestHandler):
         try:
             playercount = int(self.request.get("playerlimit"))
         except ValueError:
-            playercount = 2
+            playercount = 0
         try:
             timelimit = int(self.request.get("timelimit"))
         except ValueError:
@@ -34,9 +34,13 @@ class Query(webapp2.RequestHandler):
         filterlist = []
             
         for item in games:
-            if (item.maxplayers >= playercount >= item.minplayers) and (item.maxtime <= timelimit):
-                filterlist.append(item)
-            
+            if (playercount == 0):
+                if (item.maxtime <= timelimit):
+                    filterlist.append(item)
+            else:
+                if (item.maxplayers >= playercount >= item.minplayers) and (item.maxtime <= timelimit):
+                    filterlist.append(item)
+                
         self.response.write(index_template.render(games=filterlist))
 
 app = webapp2.WSGIApplication([

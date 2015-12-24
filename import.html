@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+  </head>
+  <body bgcolor="white" text="black"><center>
+    <table align="left">
+      <tr>
+        <td><div align="left"><a href="/">Home</a></div></td>
+        <td><div align="left"><a href="/admin">Admin</a></div></td>
+      </tr>
+    </table>
+    </br>
+    <hr>
+    <h1>Please Read: BGG Import Instructions</h1></br>
+To import your collection from BoardGameGeek you need to activate the unique API url</br>
+for your collection. To do this visit the following URL after replacing "USERNAME"</br>
+with your BGG username:</br></br>
+http://www.boardgamegeek.com/xmlapi/collection/USERNAME?own=1</br></br>
+You should see 'Your request for this collection has been accepted and will be</br>
+processed.' After several minutes refresh the page and you should see the XML output</br>
+of your collection. Then you can proceed with the import below</br></br>
+<b>Note: </b>The import will take 1 second for every game in your collection.</br></br>
+    
+    <form action="/admin/import/now" method="post">
+      <table align="center"s>
+        <tr>
+          <td><input type="text" name="BGGUserName" size="20" placeholder="Enter BGG Username"></td>
+          <td><input type="submit" value="Import"></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
+{% endautoescape %}
