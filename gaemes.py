@@ -10,7 +10,7 @@ env = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-index_template = env.get_template('index.html')
+index_template = env.get_template('templates/index.html')
 
 # Display landing page with full game list
 class MainPage(webapp2.RequestHandler):

@@ -27,7 +27,7 @@ Landing page:
 This page is publicly viewable. It initially displays the full contents of your collection and offers the ability to filter by amount of time and player count.
 
 Admin page:
-This page is accessible only to administrators of the app by appending 'admin' to the base URL (e.g. mycoolapp.appspot.com/admin). This is where you can easily add items to your collection.
+This page is accessible only to administrators of the app by appending 'admin' to the base URL (e.g. mycoolapp.appspot.com/admin). This is where you can easily add items to your collection. You can also import a collection from BoardGameGeek via this page.
 
 ## Example
 

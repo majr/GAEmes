@@ -15,17 +15,16 @@ env = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-admin_template = env.get_template('admin.html')
-query_template = env.get_template('import.html')
+admin_template = env.get_template('templates/admin.html')
+query_template = env.get_template('templates/import.html')
 
-# Display admin page with list of games currently in the datastore
 class Admin(webapp2.RequestHandler):
+    # Display admin page with list of games currently in the datastore
     def get(self):
         games = q.game_query.fetch()
         self.response.write(admin_template.render(games=games))
-
-# Add new entry (game) to the datastore and refresh the page
-class AddGame(webapp2.RequestHandler):
+        
+    # Add new entry (game) to the datastore and refresh the page
     def post(self):
         entry = q.Game(parent=q.db_key())
         entry.name = self.request.get('name')
@@ -35,7 +34,6 @@ class AddGame(webapp2.RequestHandler):
         entry.maxtime = int(self.request.get('maxtime'))
         entry.difficulty = int(self.request.get('difficulty'))
         entry.put()
-
         self.redirect('/admin')
         
 # Remove entry (game) from the datastore and refresh page
@@ -44,14 +42,14 @@ class DelGame(webapp2.RequestHandler):
         key_url = self.request.get('key')
         q.delete_game(key_url)
         self.redirect('/admin')
-        
-# Landing page for BGG Import
-class ImportPage(webapp2.RequestHandler):
-    def get(self):
-        self.response.write(query_template.render())
 
 # Import database from BGG using their API
 class ImportDB(webapp2.RequestHandler):
+    # Write query landing page
+    def get(self):
+        self.response.write(query_template.render())
+
+    # Query BGG API for a collection of owned games and import into datastore
     def post(self):
         BGGUserName = self.request.get('BGGUserName')
         url = 'http://www.boardgamegeek.com/xmlapi/collection/' + BGGUserName + '?own=1'
@@ -73,8 +71,6 @@ class ImportDB(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/admin', Admin),
-    ('/admin/add', AddGame),
     ('/admin/del', DelGame),
-    ('/admin/import/now', ImportDB),
-    ('/admin/import', ImportPage)
-], debug=True)
+    ('/admin/import', ImportDB)
+])
