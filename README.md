@@ -1,6 +1,8 @@
 # GAEmes
 
-GAEmes is a simple web database built on top of [Google App Engine ](https://cloud.google.com/appengine/docs)(the 'GAE' in GAEmes). It is designed as a quick, easy, and _free_ way to publish a list of board games that can be queried based on number of players and amount of game time.
+GAEmes is a simple web database built on top of [Google App Engine ](https://cloud.google.com/appengine/docs)(the 'GAE' in GAEmes). It is designed as a quick, easy, and _free_ way to publish a list of board games that can be queried based on number of players and amount of game time. 
+
+_Note: GAEmes is intended for small to medium collections (20-500 titles). Collections larger than 1000 titles may be difficult to import and will quickly exceed the free tier of Google App Engine._
 
 ## History
 
