@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+  </head>
+  <body bgcolor="white" text="black"><center>
+    <table align="left">
+      <tr>
+        <td><div align="left"><a href="/">Home</a></div></td>
+        <td><div align="left"><a href="/admin">Admin</a></div></td>
+        <td><div align="left"><a href="/admin/import">Import</a></div></td>
+      </tr>
+    </table>
+    </br>
+    <hr>
+    
+    <form action="/admin/mod" method="post">
+      <table align="center">
+        <tr>
+          <td>Name</td>
+          <td>Min Players</td>
+          <td>Max Players</td>
+          <td>Min Time</td>
+          <td>Max Time</td>
+          <td>Rating</td>
+          <td>BGG ID</td>
+        </tr>
+        <tr>
+          <td><input type="text" name="name" size="20" value="{{ game.name }}"></td>
+          <td><input type="number" name="minplayers" min="1" style="width: 5.5em" value="{{ game.minplayers }}"></td>
+          <td><input type="number" name="maxplayers" min="1" style="width: 5.5em" value="{{ game.maxplayers }}"></td>
+          <td><input type="number" name="mintime" min="1" style="width: 5.5em" value="{{ game.mintime }}"></td>
+          <td><input type="number" name="maxtime" min="1" style="width: 5.5em" value="{{ game.maxtime }}"></td>
+          <td><input type="float" name="rating" min="1" max="10" style="width: 5.5em" value="{{ game.rating }}"></td>
+          <td><input type="number" name="bgg_id" min="1" style="width: 5.5em" value="{{ game.bgg_id }}"></td>
+          <td><button type="submit" name="key" value="{{ game.key.urlsafe() }}">Save</button></td>
+        </tr>
+      </table>
+    </form>
+    </br>
+    </br>
+    
+    <table align="center">
+      <tr>
+        <td>
+          <form action="/admin/del" method="post">
+            <button type="submit" name="key" value="{{ game.key.urlsafe() }}" style="background-color:#c00; color:#fff;">Delete</button>
+          </form>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
+{% endautoescape %}

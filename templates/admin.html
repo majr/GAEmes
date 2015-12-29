@@ -7,6 +7,7 @@
     <table align="left">
       <tr>
         <td><div align="left"><a href="/">Home</a></div></td>
+        <td><div align="left"><a href="/admin">Admin</a></div></td>
         <td><div align="left"><a href="/admin/import">Import</a></div></td>
       </tr>
     </table>
@@ -21,7 +22,7 @@
           <td>Max Players</td>
           <td>Min Time</td>
           <td>Max Time</td>
-          <td>Difficulty</td>
+          <td>Rating</td>
         </tr>
         <tr>
           <td><input type="text" name="name" size="20"></td>
@@ -29,7 +30,7 @@
           <td><input type="number" name="maxplayers" min="1" style="width: 5.5em"></td>
           <td><input type="number" name="mintime" min="1" style="width: 5.5em"></td>
           <td><input type="number" name="maxtime" min="1" style="width: 5.5em"></td>
-          <td><input type="number" name="difficulty" min="1" max="10" style="width: 5.5em"></td>
+          <td><input type="number" step=".00001" name="rating" min="0" max="10" style="width: 5.5em"></td>
           <td><input type="submit" value="Add Game"></td>
         </tr>
       </table>
@@ -42,9 +43,8 @@
         <td>Min Players</td>
         <td>Max Players</td>
         <td>Max Time</td>
-        <td>Difficulty</td>
-        <td>Date Added</td>
-        <td>Delete?</td>
+        <td>Rating</td>
+        <td>Modify?</td>
       </tr>
       {%  for item in games %}
         <tr>
@@ -52,11 +52,10 @@
           <td>{{ item.minplayers }}</td>
           <td>{{ item.maxplayers }}</td>
           <td>{{ item.maxtime }}</td>
-          <td>{{ item.difficulty }}</td>
-          <td>{{ item.date }}</td>
+          <td>{{ item.rating }}</td>
           <td>
-            <form action="/admin/del" method="post">
-              <button type="submit" name="key" value="{{ item.key.urlsafe() }}">Delete</button>
+            <form action="/admin/mod" method="get">
+              <button type="submit" name="key" value="{{ item.key.urlsafe() }}">Modify</button>
             </form>
           </td>
         </tr>

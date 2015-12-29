@@ -36,15 +36,19 @@
         <td>Min Players</td>
         <td>Max Players</td>
         <td>Max Time</td>
-        <td>Difficulty</td>
+        <td>Rating</td>
       </tr>
       {%  for item in games %}
         <tr>
-          <td>{{ item.name }}</td>
+          {% if item.bgg_id %}
+            <td><a href="http://boardgamegeek.com/boardgame/{{ item.bgg_id }}" target="_blank" style="color:black">{{ item.name }}</a></td>
+          {% else %}
+            <td>{{ item.name }}</td>
+          {% endif %}
           <td>{{ item.minplayers }}</td>
           <td>{{ item.maxplayers }}</td>
           <td>{{ item.maxtime }}</td>
-          <td>{{ item.difficulty }}</td>
+          <td>{{ item.rating }}</td>
         </tr>
       {% endfor %}
     </table>

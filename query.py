@@ -8,6 +8,13 @@ def db_key():
 def delete_game(key_url):
     ndb.Key(urlsafe=key_url).delete()
 
+def return_key(key_url):
+    return ndb.Key(urlsafe=key_url)
+
+def query_game(key_url):
+    game = ndb.Key(urlsafe=key_url).get()
+    return game
+
 # NDB Model for a Game
 class Game(ndb.Model):
     name = ndb.StringProperty()
@@ -15,7 +22,8 @@ class Game(ndb.Model):
     maxplayers = ndb.IntegerProperty()
     mintime = ndb.IntegerProperty()
     maxtime = ndb.IntegerProperty()
-    difficulty = ndb.IntegerProperty()
+    bgg_id = ndb.IntegerProperty()
+    rating = ndb.FloatProperty()
     date = ndb.DateProperty(auto_now_add=True)
 
 game_query = Game.query(ancestor=db_key()).order(Game.name)
