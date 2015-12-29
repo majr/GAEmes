@@ -76,6 +76,9 @@ class ImportDB(webapp2.RequestHandler):
     def post(self):
         BGGUserName = self.request.get('BGGUserName')
         url = 'http://www.boardgamegeek.com/xmlapi/collection/' + BGGUserName + '?own=1'
+        prep = urlopen(url)
+        prep.close()
+        sleep(10)
         dom = parse(urlopen(url))
         for item in dom.getElementsByTagName("item"):
             entry = q.Game(parent=q.db_key())
@@ -83,17 +86,20 @@ class ImportDB(webapp2.RequestHandler):
             for game in item.getElementsByTagName("name"):
                 entry.name = game.firstChild.data
             for stats in item.getElementsByTagName("stats"):
-                entry.minplayers = int(stats.getAttribute("minplayers"))
-                entry.maxplayers = int(stats.getAttribute("maxplayers"))
-                entry.mintime = int(stats.getAttribute("minplaytime"))
-                entry.maxtime = int(stats.getAttribute("maxplaytime"))
+                if (stats.getAttribute("minplayers")):
+                    entry.minplayers = int(stats.getAttribute("minplayers"))
+                if (stats.getAttribute("maxplayers")):
+                    entry.maxplayers = int(stats.getAttribute("maxplayers"))
+                if (stats.getAttribute("minplaytime")):
+                    entry.mintime = int(stats.getAttribute("minplaytime"))
+                if (stats.getAttribute("maxplaytime")):
+                    entry.maxtime = int(stats.getAttribute("maxplaytime"))
                 for rating in stats.getElementsByTagName("rating"):
                     for average in rating.getElementsByTagName("average"):
                         entry.rating = float(average.getAttribute("value"))
-            
+                        
             entry.put()
-            # Sleep because ancestor queries are restricted to one write per second
-            sleep(1)
+            
         self.redirect('/admin')
 
 app = webapp2.WSGIApplication([
