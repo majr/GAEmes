@@ -12,8 +12,7 @@ def return_key(key_url):
     return ndb.Key(urlsafe=key_url)
 
 def query_game(key_url):
-    game = ndb.Key(urlsafe=key_url).get()
-    return game
+    return ndb.Key(urlsafe=key_url).get()
 
 # NDB Model for a Game
 class Game(ndb.Model):
